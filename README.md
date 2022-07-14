@@ -4,7 +4,7 @@ required name, email, category and password. Surname, phone number date of birth
 define categories and subcategories in database (I didn't create CRUD functions for it, because it had no sense). Category of contact must be one of the defined ones, 
 and subcategories can be defined by user, if there is no predefined ones for this category.
 ![creation page](https://github.com/evgenius081/SPA/blob/main/images/creation.jpg)
-Each contact is a user, who can log in using his email and password, that's why email must be unique. As it's CRUD-application, you can create, delete and edit 
+Each contact is a user, who can log in using his email and password, but email can't be unique. The problem is, that people can share on email, but they still have different passwords. On the other hand, if they will have same passwords, there will be collision and the first stored in database user will be logged in (I guess). But all this has no sense, because it has no difference what user is logged in :). As it's CRUD-application, you can create, delete and edit 
 contacts.
 
 ![application view for logged in](https://github.com/evgenius081/SPA/blob/main/images/logged.jpg)

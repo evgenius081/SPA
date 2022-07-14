@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SPA.Interfaces;
 using SPA.Models;
-using SPA.Services;
 
 namespace SPA.Repositories;
 

@@ -1,0 +1,73 @@
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #E01A76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.alert{
+  position: fixed;
+  bottom: 20px;
+  width: 90vw;
+  left: 5vw;
+}
+
+button{
+  background: none;
+  border: none;
+  font-size: 20px;
+}
+
+td, th{
+    vertical-align: middle;
+}
+
+.createButton{
+    position: fixed;
+    display: block;
+    right: calc(5% + 20px);
+    bottom: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.select{
+    width: 100%;
+    height: 38px;
+}
+
+span {
+    color: #d32f2f;
+}
+
+.unknown{
+    width: 60px;
+    height: 18px;
+    background: #000;
+}
+
+#alertContainer{
+    position:fixed;
+    bottom: 0;
+    height: 400px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+main{
+    height: calc(100vh - 73px)
+}

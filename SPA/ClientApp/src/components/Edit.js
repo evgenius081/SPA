@@ -221,8 +221,8 @@ export class Edit extends Component {
 
                                             <div className="row">
                                                 <div className="form-outline col-md-6 mb-4">
-                                                    <input type="text" id="form3Example1q" className="form-control" value={this.state.userName} onChange={this.changeName.bind(this)} />
-                                                    <label className="form-label" htmlFor="form3Example1q">Name</label>
+                                                    <input type="text" id="form3Example1q" className="form-control" value={this.state.userName} onChange={this.changeName.bind(this)} required/>
+                                                    <label className="form-label" htmlFor="form3Example1q">Name<span>*</span></label>
                                                 </div>
                                                 <div className="form-outline col-md-6 mb-4">
                                                     <input type="text" id="form3Example2q" className="form-control" value={this.state.userSurname == null ? "" : this.state.userSurname} onChange={this.changeSurname.bind(this)}/>
@@ -232,8 +232,8 @@ export class Edit extends Component {
                                         
                                             <div className="row">
                                                 <div className="form-outline col-md-6 mb-4">
-                                                    <input type="text" id="form3Example3q" className="form-control" value={this.state.userEmail} onChange={this.changeEmail.bind(this)}/>
-                                                    <label className="form-label" htmlFor="form3Example3q">Email</label>
+                                                    <input type="text" id="form3Example3q" className="form-control" value={this.state.userEmail} onChange={this.changeEmail.bind(this)} required/>
+                                                    <label className="form-label" htmlFor="form3Example3q">Email<span>*</span></label>
                                                 </div>
                                                 <div className="form-outline col-md-6 mb-4">
                                                     <input type="text" id="form3Example7q" className="form-control" value={this.state.userPhone == null ? "" : this.state.userPhone} onChange={this.changePhone.bind(this)} />
@@ -243,7 +243,7 @@ export class Edit extends Component {
 
                                             <div className="row">
                                                 <div className="col-md-6 mb-4">
-                                                    <select className="select" id="form3Example5q" onChange={this.changeCategoryType.bind(this)} value={this.state.chosenCategory}>
+                                                    <select className="select" id="form3Example5q" onChange={this.changeCategoryType.bind(this)} value={this.state.chosenCategory} required>
                                                         {this.state.cat.map(item => (
                                                             <option value={item.name} key={item.name}>{item.name}</option>
                                                         ))}
@@ -251,14 +251,14 @@ export class Edit extends Component {
                                                     <label className="form-label" htmlFor="form3Example5q">Category<span>*</span></label>
                                                 </div>
                                                 <div className="col-md-6 mb-4">
-                                                    {this.state.chosenCategory != "" && this.state.sub[this.state.chosenCategory] !== undefined && this.state.sub[this.state.chosenCategory].length != 0 ? (
+                                                    {this.state.chosenCategory !== "" && this.state.sub[this.state.chosenCategory] !== undefined && this.state.sub[this.state.chosenCategory].length !== 0 ? (
                                                         <select className="select" id="form3Example5q" value={this.state.chosenSubcategory} onChange={this.changeSubcategoryType.bind(this)}>
                                                             {this.state.sub[this.state.chosenCategory].map(item => (
                                                                 <option value={item} key={item}>{capitalize(item)}</option>
                                                             ))}
                                                         </select>
                                                     ) : (
-                                                        <input type="text" id="form3Example5q" className="form-control" onChange={this.changeSubcategory.bind(this)} value={this.state.chosenSubcategory == null ? "" : this.state.chosenSubcategory} />
+                                                        <input type="text" id="form3Example5q" className="form-control" onChange={this.changeSubcategory.bind(this)} value={this.state.chosenSubcategory == null ? "" : this.state.chosenSubcategory}/>
 
                                                     )}
                                                     <label className="form-label" htmlFor="form3Example5q">Subcategory</label>

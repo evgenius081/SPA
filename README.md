@@ -29,6 +29,8 @@ Used packages:
 - SpaProxy
 
   Server side of application runs separate proxy server with Node.js, where client side is runned.
+- Authentication
+  Addes JWT tokens, used to set sessionStorage token on client side (Honestly speaking, I used it from one of my previous projects connected with cybersecurity).
 
 ## Clientside
 Client side is created using React. In general, it's not very complicated React application, using states to transfer data between components. If you want some details

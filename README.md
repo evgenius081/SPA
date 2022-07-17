@@ -40,8 +40,8 @@ Client side is created using React. In general, it's not very complicated React 
 Additional packages on client side are bootstrap for nice UI, and FontAwesome, for the same reason (addes pleasant icons).
 ## Start-up
 Using MS Visual Studio or Jetbrains Rider Projects:
-- open SPA.sln file
-- run solution using SPA IIS or SPA configuration
+1. Open SPA.sln file
+2. Run solution using SPA IIS or SPA configuration
 
 ## Notes
 1. Implementation details are stored in code comments, if something is not understandable, please contact me.

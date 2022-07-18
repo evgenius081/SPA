@@ -18,48 +18,12 @@ export default class App extends Component {
         super(props);
         this.state = {
             loggedIn: sessionStorage.getItem(tokenName) !== null,
-            email: '',
-            password: '',
-            messages: []
+            messages: [],
     };
-    this.logout = this.logout.bind(this)
-    this.handleLogin = this.handleLogin.bind(this)
-    this.handleEmailChange = this.handleEmailChange.bind(this)
-    this.handlePasswordChange = this.handlePasswordChange.bind(this)
+        this.logout = this.logout.bind(this)
+        this.login = this.login.bind(this)
     this.deleteAlert = this.deleteAlert.bind(this)
     this.addAlert = this.addAlert.bind(this)
-    }
-
-    async handleLogin(e) {
-        e.preventDefault();
-        const email = this.state.email.trim();
-        const password = this.state.password.trim();
-        if (!email || !password) {
-            return;
-        }
-        const data = {
-            Email: email,
-            Password: password
-        };
-
-        const response = await fetch("user/login", {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        if (!response.ok) {
-            this.addAlert(await response.text(), "danger")
-            return 
-        }
-        let result = await response.json()
-        sessionStorage.setItem(tokenName, result);
-        this.setState({
-            loggedIn: true
-        })
-        this.props.history.push("/");
     }
 
     addAlert(message, type) {
@@ -78,12 +42,10 @@ export default class App extends Component {
         })
     }
 
-    handleEmailChange(e) {
-        this.setState({ email: e.target.value });
-    }
-
-    handlePasswordChange(e) {
-        this.setState({ password: e.target.value });
+    login() {
+        this.setState({
+            loggedIn: true
+        })
     }
 
     logout() {
@@ -98,9 +60,8 @@ export default class App extends Component {
                 <Switch>
                     <Route exact path='/' component={() => <Home loggedIn={this.state.loggedIn} addAlert={this.addAlert}/>} />
                     <Route exact path='/login' component={(props) => <Login {...props}
-                            handleLogin={this.handleLogin}
-                            handleEmail={this.handleEmailChange}
-                            handlePassword={this.handlePasswordChange}
+                        login={this.login}
+                        tokenName={tokenName}
                             loggedIn={this.state.loggedIn}
                             addAlert={this.addAlert}
                         />}

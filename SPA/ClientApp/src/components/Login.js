@@ -18,13 +18,11 @@ export class Login extends Component {
                                             <p className="text-white-50 mb-5">Please enter your login and password!</p>
                                             <div className="form-outline form-white mb-4">
                                                 <input type="email" id="typeEmailX" className="form-control form-control-lg"
-                                                    value={this.props.email}
                                                     onChange={this.props.handleEmail}/>
                                                 <label className="form-label" htmlFor="typeEmailX">Email</label>
                                             </div>
                                             <div className="form-outline form-white mb-4">
                                                 <input type="password" id="typePasswordX" className="form-control form-control-lg"
-                                                    value={this.props.password}
                                                     onChange={this.props.handlePassword}
                                                     autoComplete="on"/>
                                                 <label className="form-label" htmlFor="typePasswordX">Password</label>

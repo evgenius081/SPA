@@ -10,28 +10,24 @@ import { NotFound } from './components/404'
 
 import './custom.css'
 
+var tokenName = "tokenk;k;dgwe@1"
+
 export default class App extends Component {
     static displayName = App.name;
     constructor(props) {
         super(props);
         this.state = {
-            loggedIn: false,
+            loggedIn: sessionStorage.getItem(tokenName) !== null,
             email: '',
             password: '',
-            messages: [],
-        };
-        this.logout = this.logout.bind(this)
-        this.handleLogin = this.handleLogin.bind(this)
-        this.handleEmailChange = this.handleEmailChange.bind(this)
-        this.handlePasswordChange = this.handlePasswordChange.bind(this)
-        this.deleteAlert = this.deleteAlert.bind(this)
-        this.addAlert = this.addAlert.bind(this)
-    }
-
-    componentDidMount() {
-        this.setState({
-            loggedIn: sessionStorage.getItem("token") !== ""
-        })
+            messages: []
+    };
+    this.logout = this.logout.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
+    this.handleEmailChange = this.handleEmailChange.bind(this)
+    this.handlePasswordChange = this.handlePasswordChange.bind(this)
+    this.deleteAlert = this.deleteAlert.bind(this)
+    this.addAlert = this.addAlert.bind(this)
     }
 
     async handleLogin(e) {
@@ -46,27 +42,24 @@ export default class App extends Component {
             Password: password
         };
 
-        await fetch("user/login", {
+        const response = await fetch("user/login", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then((response) => {
-            if (response.ok) {
-                return response.json()
-            }
-            throw new Error("Wrong email or password")
-        }).then(result => {
-            sessionStorage.setItem("token", result);
-            this.setState({
-                loggedIn: true
-            })
-            this.props.history.push("/");
-        }).catch((error) => {
-            this.addAlert(error.message, "danger")
         })
+        if (!response.ok) {
+            this.addAlert(await response.text(), "danger")
+            return 
+        }
+        let result = await response.json()
+        sessionStorage.setItem(tokenName, result);
+        this.setState({
+            loggedIn: true
+        })
+        this.props.history.push("/");
     }
 
     addAlert(message, type) {
@@ -109,8 +102,6 @@ export default class App extends Component {
                             handleEmail={this.handleEmailChange}
                             handlePassword={this.handlePasswordChange}
                             loggedIn={this.state.loggedIn}
-                            email={this.state.email}
-                            password={this.state.password}
                             addAlert={this.addAlert}
                         />}
                     />
@@ -131,7 +122,7 @@ export default class App extends Component {
 
 function Logout(props){
     const history = useHistory();
-    sessionStorage.setItem("token", "")
+    sessionStorage.setItem(tokenName, "")
     props.logout();
     history.push("/")
     return <div>Logout</div>

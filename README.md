@@ -18,30 +18,31 @@ On click on table element it expands and shows all contact info. If field is emp
 ![expanded contact](https://github.com/evgenius081/SPA/blob/main/images/expanded.jpg)
 
 ## Serverside
-Server side of application was created using ASP.NET MVC Framework. Serverside application is not complicated and does not have views, because I'm using React 
+Server side of application was created using ASP.NET MVC Framework 6.0. Serverside application is not complicated and does not have views, because I'm using React 
 application instead of them, thats why controllers (there is only one actually xD) have only actions responding on fetch requests from React components. 
 
 Used packages:
-- EntityFramework
+- EntityFramework 6.0.6
 
   This package allows mapping database rows on entities and entities on objects. Also used its subpackage Sqlite, which allows to use SQLite database 
 (Database/applicationDatabase.db).
-- SpaProxy
+- SpaProxy 6.0.4
 
   Server side of application runs separate proxy server with Node.js, where client side is runned.
-- Authentication
+- Authentication 6.0.6
 
   Addes JWT tokens, used to set sessionStorage token on client side (Honestly speaking, I used it from one of my previous projects connected with cybersecurity).
 
 ## Clientside
-Client side is created using React. In general, it's not very complicated React application, using states to transfer data between components. If you want some details
-, please read note \#1 ;)
+Client side is created using React and Node.js 16.16.0. In general, it's not very complicated React application, using states to transfer data between components. If you want some details, please read note \#1 ;)
 
 Additional packages on client side are bootstrap for nice UI, and FontAwesome, for the same reason (addes pleasant icons).
 ## Start-up
 Using MS Visual Studio or Jetbrains Rider Projects:
 1. Open SPA.sln file
 2. Run solution using SPA IIS or SPA configuration
+
+Works on MS Visual Studio 2022, Rider Projects 2021.3.4. I saw that Visual Studio 2019 can't start this project properly. 
 
 ## Notes
 1. Implementation details are stored in code comments, if something is not understandable, please contact me.
